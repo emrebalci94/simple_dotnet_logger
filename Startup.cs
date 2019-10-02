@@ -18,6 +18,7 @@ using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using sample_dotnet_logger.Models;
+using sample_dotnet_logger.Services;
 
 namespace sample_dotnet_logger
 {
@@ -36,6 +37,8 @@ namespace sample_dotnet_logger
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddLogging(builder => builder.AddNLog());
+
+            services.AddSingleton<ILoggerService, LoggerService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
